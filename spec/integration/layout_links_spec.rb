@@ -21,4 +21,24 @@ describe "Layout links" do
     get '/help'
     response.should render_template('pages/help')
   end
+
+  it "should have a signup page at '/signup'" do
+    get '/signup'
+    response.should render_template('users/new')
+  end
+
+  it "should have the right links on the layout" do
+    visit root_url
+    click_link "About"
+    response.should render_template('pages/about')
+    click_link "Help"
+    response.should # fill in
+    click_link "Contact"
+    response.should # fill in
+    click_link "Home"
+    response.should # fill in
+    click_link "Sign up now!"
+    response.should # fill in
+  end
+
 end
